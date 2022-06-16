@@ -1,8 +1,8 @@
 package com.springter.business.repository.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-@ToString
+@NoArgsConstructor
 @Table(name = "posts")
 public class PostDAO {
     @Id
@@ -19,10 +19,8 @@ public class PostDAO {
     private Long id;
     @Column(name = "body")
     private String body;
-
-    public PostDAO() {
-
-    }
+    @ManyToOne
+    private UserDAO user;
 
     @Override
     public boolean equals(Object o) {
