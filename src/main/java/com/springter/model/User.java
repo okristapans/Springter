@@ -9,11 +9,10 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Component
 public class User {
     private Long id;
-    private String userName;
+    private String username;
     private String password;
     private List<Post> posts;
 }

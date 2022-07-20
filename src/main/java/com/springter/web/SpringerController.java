@@ -1,5 +1,6 @@
 package com.springter.web;
 
+import com.springter.business.repository.model.PostDAO;
 import com.springter.business.service.impl.PostServiceImpl;
 import com.springter.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -22,7 +24,12 @@ public class SpringerController {
     }
 
     @GetMapping("/{id}")
-    public List<Post> getAllUserPosts(@PathVariable Long id) {
+    public Optional<PostDAO> getPost(@PathVariable Long id){
+        return service.findByPostId(id);
+    }
+
+    @GetMapping("/user/{id}")
+    public List<PostDAO> getAllUserPosts(@PathVariable Long id) {
         System.out.println(id);
         return service.findByUserId(id);
     }

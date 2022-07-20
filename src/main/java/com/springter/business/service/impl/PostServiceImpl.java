@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,16 +29,21 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findByUserId(Long userId) {
-        List<PostDAO> posts = repository.findByUserId(userId);
-        return posts.stream()
-                .map(mapper::toPost)
-                .collect(Collectors.toList());
+    public List<PostDAO> findByUserId(Long userId) {
+        List<PostDAO> posts = repository.getPosts(userId);
+        return posts;
     }
 
     @Override
     public PostDAO postTweet(Post post) {
         return repository.save(mapper.toDao(post));
     }
+
+    @Override
+    public Optional<PostDAO> findByPostId(Long id) {
+        return repository.findById(id);
+
+    }
+
 
 }

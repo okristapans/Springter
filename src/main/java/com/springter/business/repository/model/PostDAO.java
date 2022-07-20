@@ -1,9 +1,14 @@
 package com.springter.business.repository.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,22 +18,18 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor
 @Table(name = "posts")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class PostDAO {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     @Column(name = "body")
     private String body;
     @ManyToOne
     private UserDAO user;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        PostDAO postDAO = (PostDAO) o;
-        return id != null && Objects.equals(id, postDAO.id);
-    }
 
     @Override
     public int hashCode() {

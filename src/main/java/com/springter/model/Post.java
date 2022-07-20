@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Component
 public class Post {
     private Long id;
