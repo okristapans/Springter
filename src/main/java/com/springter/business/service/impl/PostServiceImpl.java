@@ -20,18 +20,17 @@ public class PostServiceImpl implements PostService {
     private PostMapperImpl mapper;
 
     @Override
-    public List<Post> getAllPosts() {
+    public List<PostDAO> getAllPosts() {
         List<PostDAO> posts = repository.findAll();
-        return posts.stream()
-                .map(mapper::toPost)
-                .collect(Collectors.toList());
-
+        return posts;
     }
 
     @Override
-    public List<PostDAO> findByUserId(Long userId) {
-        List<PostDAO> posts = repository.getPosts(userId);
-        return posts;
+    public List<Post> findByUserId(Long userId) {
+        List<PostDAO> posts = repository.findAllByUserId(userId);
+        return posts.stream()
+                .map(mapper::toPost)
+                .collect(Collectors.toList());
     }
 
     @Override

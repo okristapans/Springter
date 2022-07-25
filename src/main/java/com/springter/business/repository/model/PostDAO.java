@@ -29,8 +29,9 @@ public class PostDAO {
     @Column(name = "body")
     private String body;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserDAO user;
-
+// private String status; ENUM?
     @Override
     public int hashCode() {
         return getClass().hashCode();

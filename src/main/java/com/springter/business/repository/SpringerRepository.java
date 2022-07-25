@@ -12,6 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface SpringerRepository extends JpaRepository<PostDAO, Long> {
-    @Query(value = "SELECT id, body FROM POSTS e WHERE e.user_id = ?1", nativeQuery = true)
-    List<PostDAO> getPosts(Long id);
+
+    List<PostDAO> findAllByUserId(Long id);
 }

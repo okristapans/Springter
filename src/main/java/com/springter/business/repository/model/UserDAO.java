@@ -16,15 +16,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Table(name = "users")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class UserDAO {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
+
     @OneToMany(mappedBy = "user")
+    @Column(name = "posts")
     private List<PostDAO> posts;
 }

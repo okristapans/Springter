@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Service
 public interface PostService {
-    List<Post> getAllPosts();
+    List<PostDAO> getAllPosts();
 
-    List<PostDAO> findByUserId(Long userId);
+    List<Post> findByUserId(Long userId);
 
     PostDAO postTweet(Post post);
 

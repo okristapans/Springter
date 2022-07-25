@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class SpringerController {
     private PostServiceImpl service;
 
     @GetMapping
-    public List<Post> getAllPosts() {
+    public List<PostDAO> getAllPosts() {
         return service.getAllPosts();
     }
 
@@ -29,16 +30,17 @@ public class SpringerController {
     }
 
     @GetMapping("/user/{id}")
-    public List<PostDAO> getAllUserPosts(@PathVariable Long id) {
+    public List<Post> getAllUserPosts(@PathVariable Long id) {
         System.out.println(id);
         return service.findByUserId(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Post> post(@RequestBody Post post) {
+    public ResponseEntity<Post> post(@Valid @RequestBody Post post) {
         service.postTweet(post);
         return new ResponseEntity<>(post, HttpStatus.CREATED);
     }
+    //@Valid
 
 }
