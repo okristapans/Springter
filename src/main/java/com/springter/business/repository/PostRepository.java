@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface SpringerRepository extends JpaRepository<PostDAO, Long> {
-
+public interface PostRepository extends JpaRepository<PostDAO, Long> {
     List<PostDAO> findAllByUserId(Long id);
 }

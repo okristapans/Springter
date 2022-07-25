@@ -16,5 +16,7 @@ public interface PostService {
 
     PostDAO postTweet(Post post);
 
-    Optional<PostDAO> findByPostId(Long id);
+    Optional<Post> findByPostId(Long id);
+
+    void deletePost(Long id);
 }

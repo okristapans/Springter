@@ -14,9 +14,9 @@ import javax.validation.constraints.Size;
 @Component
 public class Post {
     private Long id;
-    @Size(max = 2, message = "max size 200")
-    @NotBlank(message = "Name is mandatory")
+    @Size(max = 280, message = "max size 280")
+    @NotBlank(message = "Body cannot be empty!")
     private String body;
-    private User user;
+    private Long userId;
 
 }

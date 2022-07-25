@@ -24,7 +24,6 @@ public class UserDAO {
     private String username;
     @Column(name = "password")
     private String password;
-
     @OneToMany(mappedBy = "user")
     @Column(name = "posts")
     private List<PostDAO> posts;
