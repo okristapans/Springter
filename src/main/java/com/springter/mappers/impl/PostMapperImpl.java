@@ -1,8 +1,8 @@
 package com.springter.mappers.impl;
 
+import com.springter.business.repository.UserRepository;
 import com.springter.business.repository.model.PostDAO;
 import com.springter.business.repository.model.UserDAO;
-import com.springter.business.repository.model.UserRepository;
 import com.springter.mappers.PostMapper;
 import com.springter.model.Post;
 import com.springter.model.User;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class PostMapperImpl implements PostMapper {
     @Autowired
     UserRepository userRepository;
+
     @Override
     public Post toPost(PostDAO postDAO) {
         Post post = new Post();
