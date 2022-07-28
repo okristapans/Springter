@@ -21,7 +21,7 @@ class PostServiceImplTest {
     private PostRepository postRepository;
     @InjectMocks
     private PostServiceImpl postService;
-    @InjectMocks
+    @Mock
     private PostMapperImpl mapper;
 
     @Test
