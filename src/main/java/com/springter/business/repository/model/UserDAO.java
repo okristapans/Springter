@@ -15,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class UserDAO {
     @Id
@@ -27,4 +28,5 @@ public class UserDAO {
     @OneToMany(mappedBy = "user")
     @Column(name = "posts")
     private List<PostDAO> posts;
+
 }

@@ -6,6 +6,7 @@ import com.springter.business.service.PostService;
 import com.springter.mappers.impl.PostMapperImpl;
 import com.springter.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,13 +20,6 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private PostMapperImpl mapper;
 
-    @Override
-    public List<Post> getAllPosts() {
-        List<PostDAO> posts = repository.findAll();
-        return posts.stream()
-                .map(mapper::toPost)
-                .collect(Collectors.toList());
-    }
 
     @Override
     public List<Post> findByUserId(Long userId) {
@@ -48,7 +42,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void deletePost(Long id) {
+    public void deletePost(Long id) throws EmptyResultDataAccessException {
         repository.deleteById(id);
     }
 

@@ -1,15 +1,12 @@
 package com.springter.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor

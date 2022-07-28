@@ -2,16 +2,16 @@ package com.springter.business.repository.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "posts")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
